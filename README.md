@@ -1,8 +1,8 @@
-# 📄 Input File Format: `astar.txt`
+# Input File Format: `astar.txt`
 
 This file defines the graph structure and heuristics for use with the `astar.py` implementation of the A* search algorithm.
 
-## 🧠 File Overview
+## File Overview
 
 Each line in `astar.txt` represents a **single node** in the graph. The format includes:
 - The node's name (identifier)
@@ -13,8 +13,8 @@ Each line in `astar.txt` represents a **single node** in the graph. The format i
 
 ---
 
-## 📌 File Format
-<node> <heuristic> <neighbor1> <weight1> <neighbor2> <weight2> ...
+## File Format
+`<node>` `<heuristic>` `<neighbor1>` `<weight1>` `<neighbor2>` `<weight2>` ...
 
 - `<node>`: The unique identifier for the node (e.g., `A`, `B`, `City1`)
 - `<heuristic>`: An integer representing the estimated cost from this node to the goal (used by A* search)
@@ -23,7 +23,7 @@ Each line in `astar.txt` represents a **single node** in the graph. The format i
 
 ---
 
-## 📘 Example
+## Example
 A 10 B 4 C 2 B 6 C 1 D 5 C 4 D 8 E 10 D 2 E 2 E 0
 
 
@@ -35,7 +35,7 @@ This defines:
 
 ---
 
-## 🛠 Notes
+## Notes
 
 - The graph is assumed to be **undirected**, so if `A` connects to `B`, and `B` does not explicitly list `A`, the edge still exists.
 - Heuristic values should be **non-negative integers**.
@@ -44,17 +44,17 @@ This defines:
 
 ---
 
-## 🚀 Usage
+## Usage
 This file is read automatically by `astar.py`. Just make sure it is in the **same directory** as the script, and formatted correctly.
 
 
-# 🎯 Turn-Based Combat Simulation with Minimax & Alpha-Beta Pruning
+# Turn-Based Combat Simulation with Minimax & Alpha-Beta Pruning
 
 This project simulates a **strategic turn-based combat game** between an attacker and a defender. The attacker attempts to inflict maximum damage, while the defender tries to minimize it. The simulation uses the **Minimax algorithm** with **Alpha-Beta pruning** to find the optimal attack strategy in a simplified combat scenario.
 
 ---
 
-## 🧠 Concept
+## Concept
 
 - **Two Players**: Attacker (Maximizer) and Defender (Minimizer).
 - **Turns**: Each turn has two plies (one move for each player).
@@ -65,7 +65,7 @@ This project simulates a **strategic turn-based combat game** between an attacke
 
 ---
 
-## 📥 Input Format
+## Input Format
 
 The program prompts the user for the following:
 ENTER NUMBER OF TURNS: # e.g., 3 
@@ -80,7 +80,7 @@ ENTER SPACE SEPARATED UPPER AND LOWER BOUND FOR THE NEGATIVE HP: 5 15
 
 ---
 
-## 🧮 How It Works
+## How It Works
 
 - A game tree is constructed from the given depth and branching factor.
 - Each leaf (terminal node) represents a possible total damage value.
@@ -90,7 +90,7 @@ ENTER SPACE SEPARATED UPPER AND LOWER BOUND FOR THE NEGATIVE HP: 5 15
 
 ---
 
-## 📤 Output
+## Output
 
 Sample console output:
 DEPTH AND BRANCHES RATIO IS 6:2
@@ -105,7 +105,7 @@ AFTER ALPHA-BETA PRUNING LEAF NODE COMPARISONS 20
 
 ---
 
-## 🔧 Code Structure
+## Code Structure
 
 - `GameTreeNode`: Node in the game tree.
 - `GameTree`: Builds a tree based on input parameters.
@@ -116,7 +116,7 @@ AFTER ALPHA-BETA PRUNING LEAF NODE COMPARISONS 20
 
 ---
 
-## 🚀 Run the Simulation
+## Run the Simulation
 
 Make sure you have Python 3.6+ installed. Then run:
 
@@ -125,17 +125,17 @@ python alpha_beta.py
 ```
 
 
-# 🧬 Genetic Algorithm Simulation for Transaction Optimization
+# Genetic Algorithm Simulation for Transaction Optimization
 This project simulates a **Genetic Algorithm (GA)** applied to a series of financial transactions. The objective is to evolve a binary solution (genotype) that selects a subset of transactions whose net balance (deposits minus withdrawals) is as close to zero as possible.
 
 ---
 
-## 💡 Problem Description
+## Problem Description
 You're given a list of transactions, each being either a deposit (`d`) or a withdrawal (`w`) with an associated amount. The goal is to select a subset of these transactions such that the total balance is near zero. The Genetic Algorithm evolves a population of binary strings (chromosomes), where each bit represents whether a transaction is included (1) or excluded (0).
 
 ---
 
-## 📄 Input Format
+## Input Format
 The input is read from a file named `input.txt`.
 Example `input.txt`:
 5 d 200 w 150 d 300 w 100 d 50
@@ -145,24 +145,24 @@ Example `input.txt`:
 
 ---
 
-## 🧠 Genetic Algorithm Components
-### ✅ Genotype
+## Genetic Algorithm Components
+### Genotype
 - A binary string (e.g., `11001`) representing inclusion/exclusion of transactions.
 
-### ✅ Fitness Function
+### Fitness Function
 - A normalized inverse function of the absolute balance:
   fitness = 1 / (1 + |net_balance|) normalized = (fitness - offset) / normalization_constant
 
-### ✅ Selection
+### Selection
 - Picks the top-N fittest individuals based on fitness scores.
 
-### ✅ Crossover
+### Crossover
 - Two parents produce offspring by swapping parts of their genes at a defined crossover point.
 
-### ✅ Mutation
+### Mutation
 - Randomly flips a bit in the binary string with a certain probability (`mutation_factor`).
 
-### ✅ Evolution
+### Evolution
 - Repeats selection → crossover → mutation over multiple generations.
 - Stops early if an individual with perfect fitness (`1`) is found.
 
