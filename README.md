@@ -121,6 +121,66 @@ AFTER ALPHA-BETA PRUNING LEAF NODE COMPARISONS 20
 Make sure you have Python 3.6+ installed. Then run:
 
 ```bash
-python game_simulation.py
+python alpha_beta.py
+```
 
 
+# 🧬 Genetic Algorithm Simulation for Transaction Optimization
+This project simulates a **Genetic Algorithm (GA)** applied to a series of financial transactions. The objective is to evolve a binary solution (genotype) that selects a subset of transactions whose net balance (deposits minus withdrawals) is as close to zero as possible.
+
+---
+
+## 💡 Problem Description
+You're given a list of transactions, each being either a deposit (`d`) or a withdrawal (`w`) with an associated amount. The goal is to select a subset of these transactions such that the total balance is near zero. The Genetic Algorithm evolves a population of binary strings (chromosomes), where each bit represents whether a transaction is included (1) or excluded (0).
+
+---
+
+## 📄 Input Format
+The input is read from a file named `input.txt`.
+Example `input.txt`:
+5 d 200 w 150 d 300 w 100 d 50
+
+- The first line (`5`) indicates the number of transactions (also the size of each binary string).
+- Each subsequent line is a transaction with type `d` (deposit) or `w` (withdrawal) and an integer amount.
+
+---
+
+## 🧠 Genetic Algorithm Components
+### ✅ Genotype
+- A binary string (e.g., `11001`) representing inclusion/exclusion of transactions.
+
+### ✅ Fitness Function
+- A normalized inverse function of the absolute balance:
+  fitness = 1 / (1 + |net_balance|) normalized = (fitness - offset) / normalization_constant
+
+### ✅ Selection
+- Picks the top-N fittest individuals based on fitness scores.
+
+### ✅ Crossover
+- Two parents produce offspring by swapping parts of their genes at a defined crossover point.
+
+### ✅ Mutation
+- Randomly flips a bit in the binary string with a certain probability (`mutation_factor`).
+
+### ✅ Evolution
+- Repeats selection → crossover → mutation over multiple generations.
+- Stops early if an individual with perfect fitness (`1`) is found.
+
+---
+
+## ⚙️ Parameters
+Set within the script:
+
+```python
+ga.selection_per_generation = 5
+ga.num_of_combination_for_crossover = 3
+ga.crossover_point = random.choice(range(1, int(reg_size)))
+ga.mutation_factor = 0.4
+```
+
+You can adjust these to explore the GA's behavior.
+Make sure you have Python 3.7+ installed and a valid input.txt in the same directory.
+
+```bash
+python genetic_algorithm_simulation.py
+```
